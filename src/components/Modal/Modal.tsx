@@ -33,14 +33,10 @@ const Modal = (props: IModal) => {
     setModalOpen(false);
   };
 
-  const handleOverlayClick = () => {
-    setModalOpen(false);
-  };
-
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <ModalOverlay onClick={handleOverlayClick}>
+    <ModalOverlay onClick={closeModal}>
       <ModalContainer ref={modalRef} onClick={handleModalContentClick}>
         <ModalHeader>
           <ModalHeaderText>{name}</ModalHeaderText>
