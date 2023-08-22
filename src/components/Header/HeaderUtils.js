@@ -20,7 +20,7 @@ export const HeaderLogo = styled.img`
 
 export const HeaderSearchbarContainer = styled.div`
   position: relative;
-  width: 26%;
+  width: 22%;
   height: 90%;
 `;
 
