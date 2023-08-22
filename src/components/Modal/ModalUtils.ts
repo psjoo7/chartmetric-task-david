@@ -19,11 +19,11 @@ export const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); // 반투명한 검은색
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; // 다른 요소 위에 오도록 높은 z-index 값 설정
+  background-color: rgba(29, 43, 56, 0.7);
+  z-index: 999;
 `;
 
 export const ModalContainer = styled.div`
@@ -59,7 +59,7 @@ export const ModalHeaderText = styled.p`
 
 export const ModalHeaderButton = styled.button`
   width: 5%;
-  height: 90%;
+  height: 100%;
   background-image: url('${process.env.PUBLIC_URL}/assets/images/close.svg');
   background-size: contain;
   background-repeat: no-repeat;

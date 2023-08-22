@@ -8,19 +8,18 @@ export const HeaderContainer = styled.div`
   width: 100%;
   height: 5rem;
   padding: 1rem 2rem;
-  color: #fff;
   background-color: ${(props) => props.theme.backgroundSecondary};
   z-index: 1000;
 `;
 
 export const HeaderLogo = styled.img`
-  width: 15%;
+  width: 15rem;
   height: 100%;
 `;
 
 export const HeaderSearchbarContainer = styled.div`
   position: relative;
-  width: 22%;
+  width: 15rem;
   height: 2.5rem;
 `;
 

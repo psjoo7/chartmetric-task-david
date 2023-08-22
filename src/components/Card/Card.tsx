@@ -8,10 +8,6 @@ const Card = (props: ICard) => {
 
   const srcImage = profilePath ? `${imageBaseUrl}${profilePath}` : placeholderImage;
 
-  // const handleError = (e) => {
-  //   e.target.onerror = null;
-  //   e.target.src = placeholderImage;
-  // };
   const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.onerror = null;
     e.currentTarget.src = placeholderImage;
