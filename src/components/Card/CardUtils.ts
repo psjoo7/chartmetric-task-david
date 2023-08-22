@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export interface ICard {
+  profilePath?: string;
+  name: string;
+  popularity: number;
+}
+
 export const CardContainer = styled.div`
   position: relative;
   width: 100%;

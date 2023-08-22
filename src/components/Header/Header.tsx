@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   HeaderContainer,
@@ -6,32 +7,35 @@ import {
   HeaderSearchbarIcon,
   HeaderSearchbar,
 } from './HeaderUtils';
-import { useState, useEffect } from 'react';
 
 const Header = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // 현재 위치 정보를 가져옵니다.
+  const location = useLocation();
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    // 라우터 위치가 변경될 때마다 호출되는 부분
     setSearchValue('');
-  }, [location.pathname]); // 의존성 배열에 location.pathname을 추가하여 위치가 바뀔 때마다 이 훅이 실행되도록 합니다.
+  }, [location.pathname]);
 
-  const handleLogo = (event) => {
+  const handleLogo = (event: React.MouseEvent<HTMLImageElement>) => {
     if (event.type === 'click') {
       navigate('/');
     }
   };
 
-  const handleSearchbar = (event) => {
-    if (event.key === 'Enter' || event.type === 'click') {
+  const handleSearchbar = (
+    event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLImageElement>,
+  ) => {
+    if ('key' in event && event.key === 'Enter') {
+      if (searchValue === '') navigate(`/`);
+      else navigate(`/search/person?query=${searchValue}`);
+    } else if (event.type === 'click') {
       if (searchValue === '') navigate(`/`);
       else navigate(`/search/person?query=${searchValue}`);
     }
   };
 
-  const handleSearchbarChange = (event) => {
+  const handleSearchbarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 

@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+export type IModal = {
+  profilePath: string | null;
+  name: string;
+  gender: string;
+  popularity: number;
+  known_for: Array<{
+    backdrop_path?: string | null;
+    original_title?: string;
+    original_name?: string;
+  }>;
+  setModalOpen: (isOpen: boolean) => void;
+};
+
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;

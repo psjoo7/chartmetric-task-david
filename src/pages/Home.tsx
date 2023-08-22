@@ -1,40 +1,47 @@
-import { useEffect, useState, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { throttle } from 'lodash';
-import { GridContainer } from '../components/Grid/Grid';
-import Card from '../components/Card/Card';
-import Modal from '../components/Modal/Modal';
+import throttle from 'lodash/throttle';
+import { useState, useEffect, useCallback } from 'react';
+import { Card } from 'components/Card/';
+import { Grid } from 'components/Grid/';
+import { Modal } from 'components/Modal/';
 
-const Search = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get('query') || '';
+// 필요한 타입들
+type Person = {
+  id: number;
+  profile_path: string;
+  name: string;
+  popularity: number;
+  gender: string;
+  known_for: any[]; // 이 부분은 API 응답에 따라 상세하게 타입을 지정할 수 있습니다.
+};
+
+const Home = () => {
   const TMDBKey = process.env.REACT_APP_TMDB_API;
-  const [data, setData] = useState([]);
+
+  const [data, setData] = useState<Person[]>([]);
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
-  const [selectedPerson, setSelectedPerson] = useState(null); // 선택된 사람 정보 상태
-  const [modalOpen, setModalOpen] = useState(false); // 모달 열림 상태
+  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const showModal = (person) => {
+  const showModal = (person: Person) => {
     setModalOpen(true);
     setSelectedPerson(person);
   };
 
   const fetchData = useCallback(
-    async (currentPage) => {
+    async (currentPage: number) => {
       if (isFetching) return;
 
       setIsFetching(true);
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/search/person?api_key=${TMDBKey}&query=${searchQuery}&page=${currentPage}`,
+          `https://api.themoviedb.org/3/person/popular?api_key=${TMDBKey}&page=${currentPage}`,
         );
 
         setData((prevData) => {
           const newResults = response.data.results.filter(
-            (result) => !prevData.some((item) => item.id === result.id),
+            (result: Person) => !prevData.some((item) => item.id === result.id),
           );
           return [...prevData, ...newResults];
         });
@@ -44,48 +51,40 @@ const Search = () => {
       }
       setIsFetching(false);
     },
-    [searchQuery, isFetching],
+    [isFetching, TMDBKey],
   );
 
   useEffect(() => {
-    setData([]);
-    setPage(1);
-    fetchData(1);
-  }, [searchQuery]);
+    fetchData(page);
+  }, []);
 
   const handleScroll = throttle(() => {
     if (
-      window.innerHeight + document.documentElement.scrollTop <
+      window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight - 100
-    )
-      return;
-    fetchData(page);
-  }, 200); // 200ms throttle
+    ) {
+      fetchData(page);
+    }
+  }, 200);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
-
   return (
     <>
-      <GridContainer>
+      <Grid>
         {data.map((person, index) => (
-          <div
-            key={index}
-            onClick={() => showModal(person)} // 카드를 클릭하면 모달 열기
-          >
+          <div key={index} onClick={() => showModal(person)}>
             <Card
-              key={index}
-              onClick={() => showModal(person)}
               profilePath={person.profile_path}
               name={person.name}
               popularity={person.popularity}
             />
           </div>
         ))}
-      </GridContainer>
-      {modalOpen && (
+      </Grid>
+      {modalOpen && selectedPerson && (
         <Modal
           profilePath={selectedPerson.profile_path}
           name={selectedPerson.name}
@@ -99,4 +98,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Home;

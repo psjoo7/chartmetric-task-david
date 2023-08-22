@@ -1,16 +1,20 @@
-import { useState } from 'react';
-import { CardContainer, CardPopularity, CardImage, CardText } from './CardUtils';
+import { ICard, CardContainer, CardPopularity, CardImage, CardText } from './CardUtils';
 
-const Card = ({ profilePath, name, popularity }) => {
+const Card = (props: ICard) => {
+  const { profilePath, name, popularity } = props;
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w200';
   const filteredPopularity = Math.round(popularity);
   const placeholderImage = `${process.env.PUBLIC_URL}/assets/images/404_not_found.svg`;
 
   const srcImage = profilePath ? `${imageBaseUrl}${profilePath}` : placeholderImage;
 
-  const handleError = (e) => {
-    e.target.onerror = null;
-    e.target.src = placeholderImage;
+  // const handleError = (e) => {
+  //   e.target.onerror = null;
+  //   e.target.src = placeholderImage;
+  // };
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = placeholderImage;
   };
 
   return (
