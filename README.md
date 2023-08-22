@@ -7,7 +7,7 @@
 - Grid layout with a max width of 1500px.
 - Displays up to 6 cards.
 
-## Infinite Scroll && Throttle
+## Infinite Scroll & Throttle
 <img width="654" alt="스크린샷 2023-08-22 오후 1 49 37" src="https://github.com/psjoo7/chartmetric-task-david/assets/66294314/84809497-5b26-4510-9897-4abd932d67c0">
 
 - Selected infinite scrolling over pagination to optimize the user experience. While pagination might be preferable when users need to locate specific content, in scenarios where users are primarily browsing based on images and actor names, infinite scrolling proves more efficient and user-friendly.
