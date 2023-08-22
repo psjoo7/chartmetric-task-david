@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   padding: 1rem 2rem;
   color: #fff;
   background-color: ${(props) => props.theme.backgroundSecondary};
-  z-index: 999;
+  z-index: 1000;
 `;
 
 export const HeaderLogo = styled.img`
@@ -21,21 +21,22 @@ export const HeaderLogo = styled.img`
 export const HeaderSearchbarContainer = styled.div`
   position: relative;
   width: 22%;
-  height: 90%;
+  height: 2.5rem;
 `;
 
 export const HeaderSearchbarIcon = styled.img`
   position: absolute;
-  top: 0.6rem;
-  left: 0.5rem;
+  top: 50%;
+  left: 5%;
   width: 1.5rem;
   cursor: pointer;
+  transform: translateY(-50%);
 `;
 
 export const HeaderSearchbar = styled.input`
   width: 100%;
   height: 100%;
   padding: 0.5rem 1rem 0.5rem 2.5rem;
-  border-radius: 0.4rem;
+  border-radius: 0.2rem;
   background-color: ${(props) => props.theme.backgroundPrimary};
 `;

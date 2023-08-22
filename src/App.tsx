@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { Home, Search } from './pages';
-import { GlobalStyles, theme } from './styles';
-import Layout from './layouts/Layout';
+import { Home, Search } from 'pages';
+import { GlobalStyles, theme } from 'styles';
+import Layout from 'layouts/Layout';
 
 const App = () => {
   return (

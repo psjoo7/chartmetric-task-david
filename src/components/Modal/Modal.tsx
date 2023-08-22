@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import {
+  IModal,
   ModalOverlay,
   ModalContainer,
   ModalHeader,
@@ -14,16 +15,18 @@ import {
   ModalContentTextImage,
 } from './ModalUtils';
 
-const Modal = ({ profilePath, name, gender, popularity, known_for, setModalOpen }) => {
+const Modal = (props: IModal) => {
+  const { profilePath, name, gender, popularity, known_for, setModalOpen } = props;
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500/';
   const placeholderImage = `${process.env.PUBLIC_URL}/assets/images/404_not_found.svg`;
 
-  const handleError = (e) => {
-    e.target.onerror = null;
-    e.target.src = placeholderImage;
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = placeholderImage;
   };
-  const handleModalContentClick = (e) => {
-    e.stopPropagation(); // 클릭 이벤트의 전파를 중단하여 모달이 닫히지 않도록 함
+
+  const handleModalContentClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
   };
 
   const closeModal = () => {
@@ -34,7 +37,7 @@ const Modal = ({ profilePath, name, gender, popularity, known_for, setModalOpen 
     setModalOpen(false);
   };
 
-  const modalRef = useRef(); // modalRef 생성
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <ModalOverlay onClick={handleOverlayClick}>
