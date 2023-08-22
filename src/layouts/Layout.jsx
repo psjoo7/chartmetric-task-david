@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../components/Header';
-import { LayoutContainer, ContentContainer, ContentHeader, ContentFooter } from './LayoutUtils';
+import { LayoutContainer, ContentContainer, ContentHeader } from './LayoutUtils';
 
 const Layout = () => {
   return (
@@ -9,7 +9,6 @@ const Layout = () => {
       <ContentContainer>
         <ContentHeader>Celebrities</ContentHeader>
         <Outlet />
-        <ContentFooter />
       </ContentContainer>
     </LayoutContainer>
   );
