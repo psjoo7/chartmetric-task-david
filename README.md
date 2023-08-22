@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Chartmetric Task
+### David (Sung Jun) Park
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Responsive Layout
+<img width="1440" alt="스크린샷 2023-08-22 오후 1 30 44" src="https://github.com/psjoo7/chartmetric-task-david/assets/66294314/1b41340f-ddc7-444d-aedc-973eb55ced44">
 
-## Available Scripts
+ Used responsive grid layout with max width 1500px, so it can make only 6 cards maximum.
 
-In the project directory, you can run:
+## Infinite Scroll && Throttle
+<img width="654" alt="스크린샷 2023-08-22 오후 1 49 37" src="https://github.com/psjoo7/chartmetric-task-david/assets/66294314/84809497-5b26-4510-9897-4abd932d67c0">
 
-### `npm start`
+ Considering user experience, made infinite scroll instead of using pagination. 
+ Pagination is useful when the users are searching for particular information, but in this case, because users are searching general informations based on actors image, infinite scroll would provide better user experience.
+ Also, used lodash library for throttle. I used throttle instead of debounce also, considering user experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Data fetch
+<img width="655" alt="스크린샷 2023-08-22 오후 1 34 36" src="https://github.com/psjoo7/chartmetric-task-david/assets/66294314/4824163d-1138-45f8-aa51-39304a3c2d2a">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img width="749" alt="스크린샷 2023-08-22 오후 1 33 05" src="https://github.com/psjoo7/chartmetric-task-david/assets/66294314/0d944bd0-c172-4d6b-846e-0c57deaac3bc">
 
-### `npm test`
+ Made a custom hook called useTMDBdata for reusable code.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Typescript 
 
-### `npm run build`
+ First, I used Javascript, and changed it to Typescript to stabilize code.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
